@@ -30,4 +30,9 @@ public class RentServiceImpl implements  RentService{
 	public List<ChuZhuBean> findByExample(ChuZhuBean bean) {
 		return rentDao.findByExample(bean);
 	}
+
+	@Override
+	public List<String> findAllDetailId() {
+		return rentDao.findAllDetailId();
+	}
 }

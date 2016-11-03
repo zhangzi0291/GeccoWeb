@@ -7,5 +7,6 @@ import com.demo.gecco.htmlBean.ChuZhuBean;
 public interface RentDao {
 	Integer insert(ChuZhuBean bean);
 	List<ChuZhuBean> findAll();
+	List<String> findAllDetailId();
 	List<ChuZhuBean> findByExample(ChuZhuBean bean);
 }

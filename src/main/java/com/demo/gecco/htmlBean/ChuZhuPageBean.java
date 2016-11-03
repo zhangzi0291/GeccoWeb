@@ -28,9 +28,18 @@ public class ChuZhuPageBean implements HtmlBean {
 	@Request
 	private HttpRequest request;
 	
+
+	@Href(click=true)
+	@HtmlField(cssPath = "td.t.qj-rentd > a")
+	private List<String> href;
 	
-	@HtmlField(cssPath = "#infolist > table > tbody > tr")
-	private List<ChuZhuBean> chuzhu;
+	public Integer getCurrPage() {
+		return currPage;
+	}
+
+	public void setCurrPage(Integer currPage) {
+		this.currPage = currPage;
+	}
 
 	public String getPgtid() {
 		return pgtid;
@@ -56,22 +65,14 @@ public class ChuZhuPageBean implements HtmlBean {
 		this.request = request;
 	}
 
-	public List<ChuZhuBean> getChuzhu() {
-		return chuzhu;
+	public List<String> getHref() {
+		return href;
 	}
 
-	public void setChuzhu(List<ChuZhuBean> chuzhu) {
-		this.chuzhu = chuzhu;
+	public void setHref(List<String> href) {
+		this.href = href;
 	}
 
-	public Integer getCurrPage() {
-		return currPage;
-	}
-
-	public void setCurrPage(Integer currPage) {
-		this.currPage = currPage;
-	}
-	
 	public void startG() {
 		HttpGetRequest start = new HttpGetRequest("http://nj.58.com/chuzu/pn1/?PGTID=0d3090a7-000a-cbc9-0526-eeaec68fc3ed&ClickID=9");
 		start.setCharset("GBK");
@@ -91,8 +92,9 @@ public class ChuZhuPageBean implements HtmlBean {
 
 	@Override
 	public String toString() {
-		return "ChuZhuPageBean [currPage=" + currPage + ", pgtid=" + pgtid + ", clickid=" + clickid + ", request="
-				+ request  + ", chuzhu=" + chuzhu + "]";
+		return "ChuZhuPageBean [currPage=" + currPage + ", pgtid=" + pgtid + ", clickid=" + clickid +"\n"
+				+ ", request="	+ request + ", href=" + href + "]"+"\n";
 	}
+
 	
 }
