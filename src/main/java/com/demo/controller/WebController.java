@@ -1,11 +1,14 @@
 package com.demo.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.demo.gecco.htmlBean.ChuZhuBean;
 import com.demo.service.RentService;
 import com.demo.util.SpringContextUtil;
 import com.geccocrawler.gecco.GeccoEngine;
@@ -49,5 +52,11 @@ public class WebController {
 			return"false";
 		}
 		return"success";
+	}
+	@RequestMapping("getAll")
+	@ResponseBody
+	public List<ChuZhuBean> getAll(){
+		List<ChuZhuBean> list=rentService.findAll();
+		return list;
 	}
 }

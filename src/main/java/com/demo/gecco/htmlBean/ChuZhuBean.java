@@ -11,7 +11,7 @@ import com.geccocrawler.gecco.request.HttpRequest;
 import com.geccocrawler.gecco.spider.HtmlBean;
 
 
-@Gecco(matchUrl = "http://nj.58.com/zufang/{detailId}.shtml?version={version}&psid={psid}&entinfo={entinfo}",pipelines="saveHousePipeline")
+@Gecco(matchUrl = {"http://nj.58.com/zufang/{detailId}.shtml?version={version}&psid={psid}&entinfo={entinfo}","http://nj.58.com/hezu/{detailId}.shtml?version={version}&psid={psid}&entinfo={entinfo}"},pipelines="saveHousePipeline")
 public class ChuZhuBean implements HtmlBean{
 	
 	private static final long serialVersionUID = 3117365397519039492L;
@@ -28,6 +28,7 @@ public class ChuZhuBean implements HtmlBean{
 	@RequestParameter
 	private String entinfo;
 	
+	
 	@Request
 	private HttpRequest request;
 	
@@ -36,11 +37,11 @@ public class ChuZhuBean implements HtmlBean{
 	private String mainTitle;
 	
 	@Text
-	@HtmlField(cssPath = "body > div.main > div.house-info.white-block.clearfix > div.house-primary-content-wrap.fr > ul > li.house-primary-content-li.house-primary-content-fir.clearfix > div > i > em")
+	@HtmlField(cssPath = "div > i > em")
 	private String housePrice;
 	
 	@Text
-	@HtmlField(cssPath = "body > div.main > div.house-info.white-block.clearfix > div.house-primary-content-wrap.fr > ul > li:nth-child(2) > div")
+	@HtmlField(cssPath = "div.house-primary-content-wrap.fr > ul > li:nth-child(2) > div")
 	private String houseType;
 
 	@Text
@@ -72,12 +73,18 @@ public class ChuZhuBean implements HtmlBean{
 	private String img4;
 
 	@Text
-	@HtmlField(cssPath = "body > div.main > div.house-info.white-block.clearfix > div.house-primary-content-wrap.fr > ul > li:nth-child(4) > div")
+	@HtmlField(cssPath = "div.house-info.white-block.clearfix > div.house-primary-content-wrap.fr > ul > li:nth-child(4) > div")
 	private String address;
 
 	@Text
-	@HtmlField(cssPath = "body > div.main > div.house-info.white-block.clearfix > div.house-primary-content-wrap.fr > ul > li.house-primary-content-li.clearfix.broker-config > div ")
+	@HtmlField(cssPath = "div.house-primary-content-wrap.fr > ul > li.house-primary-content-li.house-primary-content-fir.clearfix > div > span")
+	private String payMethod;
+	
 	private String equipment;
+	
+	
+	
+
 
 	public String getDetailId() {
 		return detailId;
@@ -191,13 +198,48 @@ public class ChuZhuBean implements HtmlBean{
 		this.request = request;
 	}
 
+	public String getVersion() {
+		return version;
+	}
+
+	public void setVersion(String version) {
+		this.version = version;
+	}
+
+	public String getPsid() {
+		return psid;
+	}
+
+	public void setPsid(String psid) {
+		this.psid = psid;
+	}
+
+	public String getEntinfo() {
+		return entinfo;
+	}
+
+	public void setEntinfo(String entinfo) {
+		this.entinfo = entinfo;
+	}
+
+	public String getPayMethod() {
+		return payMethod;
+	}
+
+	public void setPayMethod(String payMethod) {
+		this.payMethod = payMethod;
+	}
+
 	@Override
 	public String toString() {
-		return "ChuZhuBean [detailId=" + detailId + ", request=" + request + ", mainTitle=" + mainTitle +"\n"
-				+ ", housePrice=" + housePrice + ", houseType=" + houseType + ", area1=" + area1 + ", area2=" + area2+"\n"
-				+ ", area3=" + area3 + ", img1=" + img1 + ", img2=" + img2 + ", img3=" + img3 + ", img4=" + img4+"\n"
-				+ ", address=" + address + ", equipment=" + equipment + "]"+"\n";
+		return "ChuZhuBean [detailId=" + detailId + ", version=" + version + ", psid=" + psid + ", entinfo=" + entinfo
+				+ ", request=" + request + ", mainTitle=" + mainTitle + ", housePrice=" + housePrice + ", houseType="
+				+ houseType + ", area1=" + area1 + ", area2=" + area2 + ", area3=" + area3 + ", img1=" + img1
+				+ ", img2=" + img2 + ", img3=" + img3 + ", img4=" + img4 + ", address=" + address + ", equipment="
+				+ equipment + ", payMethod=" + payMethod + "]";
 	}
+
+
 	
 	
 }

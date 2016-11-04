@@ -17,9 +17,16 @@ public class SaveHousePipeline implements Pipeline<ChuZhuBean>{
 	
 	@Override
 	public void process(ChuZhuBean bean) {
-		System.out.println(bean);
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		List<String> detailList = rentService.findAllDetailId();
 		if(detailList.contains(bean.getDetailId())){
+			return;
+		}
+		if((bean.getArea3()==null||bean.getArea2()==null)&&bean.getAddress()==null){
 			return;
 		}
 		rentService.insert(bean);

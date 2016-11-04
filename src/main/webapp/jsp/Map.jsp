@@ -36,10 +36,11 @@ body {
 </head>
 <body>
 <div>
-	<input type="text" id="text" >
+	<input type="text" id="text" value="长江科技园">
 	<input type="text" id="lon" >
 	<input type="text" id="lat" >
 	<button onclick="searchByStationName()">do</button>
+	<button onclick="getpoi()">get</button>
 </div>
 <div class="container">
 	<div id="map"></div> 
@@ -54,22 +55,29 @@ body {
 	
 	map.enableScrollWheelZoom()
 	map.addControl(new BMap.NavigationControl());  //添加默认缩放平移控件
-// 	map.addControl(new BMap.OverviewMapControl()); //添加默认缩略地图控件
-	map.addControl(new BMap.OverviewMapControl({ isOpen: true, anchor: BMAP_ANCHOR_TOP_RIGHT }));   //右下角，打开
+	map.addControl(new BMap.OverviewMapControl()); //添加默认缩略地图控件
+	map.addControl(new BMap.MapTypeControl()); 
+	map.setCurrentCity("南京"); 
 	
 	var localSearch = new BMap.LocalSearch(map);
 // 	localSearch.enableAutoViewport(); //允许自动调节窗体大小
-	
-	function searchByStationName() {
-		var keyword =  $("#text").val();
+	function getpoi(){
+		var x
+		searchByStationName($("#text").val())
+		
+	}
+	function searchByStationName(address) {
+		var keyword = address ;
+		localSearch.search(keyword);
 		localSearch.setSearchCompleteCallback(function(searchResult) {
 			var poi = searchResult.getPoi(0);
-		 $("#lon").val(poi.point.lng);
-		 $("#lat").val(poi.point.lat);
-					 //获取经度和纬度，将结果显示在文本框中
-			map.centerAndZoom(poi.point, 13);
+			$("#lon").val( poi.point.lng+","+poi.point.lat );
+			var marker = new BMap.Marker(poi.point);       
+			map.addOverlay(marker);
+			map.centerAndZoom(poi.point, 20);  
+			
 		});
-		localSearch.search(keyword);
+		
 	}
 </script>
 </body>
