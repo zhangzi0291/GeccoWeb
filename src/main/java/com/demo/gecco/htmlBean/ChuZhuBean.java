@@ -73,18 +73,20 @@ public class ChuZhuBean implements HtmlBean{
 	private String img4;
 
 	@Text
-	@HtmlField(cssPath = "div.house-info.white-block.clearfix > div.house-primary-content-wrap.fr > ul > li:nth-child(4) > div")
+	@HtmlField(cssPath = "div.house-primary-content-wrap.fr > ul > li:nth-child(4) > div")
 	private String address;
 
 	@Text
-	@HtmlField(cssPath = "div.house-primary-content-wrap.fr > ul > li.house-primary-content-li.house-primary-content-fir.clearfix > div > span")
+	@HtmlField(cssPath = "li.house-primary-content-li.house-primary-content-fir.clearfix > div > span")
 	private String payMethod;
 	
 	private String equipment;
 	
+	private String longitude;
 	
+	private String latitude;
 	
-
+	private String url;
 
 	public String getDetailId() {
 		return detailId;
@@ -230,14 +232,41 @@ public class ChuZhuBean implements HtmlBean{
 		this.payMethod = payMethod;
 	}
 
+	public String getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
+	}
+
+	public String getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
 	@Override
 	public String toString() {
 		return "ChuZhuBean [detailId=" + detailId + ", version=" + version + ", psid=" + psid + ", entinfo=" + entinfo
 				+ ", request=" + request + ", mainTitle=" + mainTitle + ", housePrice=" + housePrice + ", houseType="
 				+ houseType + ", area1=" + area1 + ", area2=" + area2 + ", area3=" + area3 + ", img1=" + img1
-				+ ", img2=" + img2 + ", img3=" + img3 + ", img4=" + img4 + ", address=" + address + ", equipment="
-				+ equipment + ", payMethod=" + payMethod + "]";
+				+ ", img2=" + img2 + ", img3=" + img3 + ", img4=" + img4 + ", address=" + address + ", payMethod="
+				+ payMethod + ", equipment=" + equipment + ", longitude=" + longitude + ", latitude=" + latitude
+				+ ", url=" + url + "]";
 	}
+
+	
 
 
 	

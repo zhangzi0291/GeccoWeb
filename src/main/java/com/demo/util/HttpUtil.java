@@ -23,6 +23,14 @@ import com.alibaba.fastjson.JSONObject;
 
 public class HttpUtil {
 	
+	
+	private static Boolean debug=false; 
+	public static Boolean getDebug() {
+		return debug;
+	}
+	public static void setDebug(Boolean debug) {
+		HttpUtil.debug = debug;
+	}
 	/**
 	 * 
 	 * 发送GET请求
@@ -48,8 +56,10 @@ public class HttpUtil {
             // 获取所有响应头字段
             Map<String, List<String>> map = connection.getHeaderFields();
             // 遍历所有的响应头字段
-            for (String key : map.keySet()) {
-                System.out.println(key + "--->" + map.get(key));
+            if(debug){
+	            for (String key : map.keySet()) {
+	                System.out.println(key + "--->" + map.get(key));
+	            }
             }
             // 定义 BufferedReader输入流来读取URL的响应
             in = new BufferedReader(new InputStreamReader(

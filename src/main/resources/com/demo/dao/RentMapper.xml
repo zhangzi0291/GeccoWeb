@@ -16,14 +16,17 @@
     <result column="address" property="address" jdbcType="VARCHAR" />
     <result column="equipment" property="equipment" jdbcType="VARCHAR" />
     <result column="pay_method" property="payMethod" jdbcType="VARCHAR" />
+    <result column="longitude" property="longitude" jdbcType="VARCHAR" />
+    <result column="latitude" property="latitude" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
   </resultMap>
  <insert id="insert" parameterType="com.demo.gecco.htmlBean.ChuZhuBean">
  	insert into rent_house (detail_id ,main_title ,house_price,house_type,area1 ,area2 ,area3 ,img1
- 	,img2 ,img3 ,img4 ,address ,equipment)
+ 	,img2 ,img3 ,img4 ,address ,equipment ,longitude ,latitude ,url)
  	values(  #{detailId,jdbcType=VARCHAR},#{mainTitle,jdbcType=VARCHAR},#{housePrice,jdbcType=VARCHAR},
  	#{houseType,jdbcType=VARCHAR},#{area1,jdbcType=VARCHAR} ,#{area2,jdbcType=VARCHAR} ,#{area3,jdbcType=VARCHAR},
  	#{img1,jdbcType=VARCHAR} ,#{img2,jdbcType=VARCHAR} ,#{img3,jdbcType=VARCHAR} ,#{img4,jdbcType=VARCHAR} 
- 	, #{address,jdbcType=VARCHAR}, #{equipment,jdbcType=VARCHAR} )
+ 	, #{address,jdbcType=VARCHAR}, #{equipment,jdbcType=VARCHAR} , #{longitude,jdbcType=VARCHAR} , #{latitude,jdbcType=VARCHAR} ,#{url,jdbcType=VARCHAR})
  </insert>
  <select id="findAll" resultMap="BaseResultMap"> 
  	select * from rent_house
