@@ -17,7 +17,7 @@ public class NextPagePipeline implements Pipeline<ChuZhuPageBean>{
 			
 			Integer currPage = bean.getCurrPage();
 			Integer nextPage = currPage + 1;
-			Integer totalPage = 30;
+			Integer totalPage = 20;
 			
 			if(nextPage <= totalPage) {
 			    String nextUrl = "";

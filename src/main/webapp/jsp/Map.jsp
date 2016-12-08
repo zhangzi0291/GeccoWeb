@@ -43,6 +43,7 @@ body {
 	<button onclick="searchByStationName()">do</button>
 	<button onclick="getpoi()">get</button>
 	<button onclick="getInfo()">getInfo</button>
+	<button onclick="stop()">stop</button>
 </div>
 <div class="container">
 	<div id="map"></div> 
@@ -69,8 +70,7 @@ body {
 			//立刻执行函数
 			(function () {
 				var point = new BMap.Point(rentinfo.longitude , rentinfo.latitude);
-				var houseIcon = new BMap.Icon("${pageContext.request.contextPath}/img/house.png", new BMap.Size(24, 24), {}); 
-				var marker = new BMap.Marker(point,{icon: houseIcon}); 
+				var marker = new BMap.Marker(point); 
 				var opts = {    width : 300,     // 信息窗口宽度
 						height: 200,     // 信息窗口高度
 						title : rentinfo.mainTitle,  // 信息窗口标题
@@ -79,7 +79,11 @@ body {
 					"<div>房屋类型："+rentinfo.houseType+"<div>   "+
 					"<div>地址："+rentinfo.address+"<div>       "+
 					"<div>地市："+rentinfo.area1+" - "+rentinfo.area2+" - "+rentinfo.area3+"<div>       "+
-					"<a target='_blank' href='"+rentinfo.url+".shtml' >点击跳转</a>"
+					"<a target='_blank' href='"+rentinfo.url+".shtml' >点击跳转</a>"+
+					"<img alt='1' src='"+rentinfo.img1+"'>"+
+					"<img alt='2' src='"+rentinfo.img2+"'>"+
+					"<img alt='3' src='"+rentinfo.img3+"'>"+
+					"<img alt='4' src='"+rentinfo.img4+"'>"+
 
 	 			marker.addEventListener("click", function(){
 					var infoWindow = new BMap.InfoWindow(html, opts);  // 创建信息窗口对象 
@@ -98,6 +102,19 @@ body {
 			data:"",
 			success:function(data){
 				alert(data)
+			},
+			error:function(){
+				alert("error");
+			}
+		})
+	}
+	function stop(){
+		$.ajax({
+			type:"POST",
+			url:"${pageContext.request.contextPath}/stop",
+			data:"",
+			success:function(data){
+				console.log(data)
 			},
 			error:function(){
 				alert("error");

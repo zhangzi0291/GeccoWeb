@@ -30,9 +30,8 @@ public class ChuZhuPageBean implements HtmlBean {
 	
 
 	@Href(click=true)
-	@HtmlField(cssPath = "td.t.qj-rentd > a")
+	@HtmlField(cssPath = "div.des > h2 > a")
 	private List<String> href;
-	
 	public Integer getCurrPage() {
 		return currPage;
 	}

@@ -33,23 +33,23 @@ public class ChuZhuBean implements HtmlBean{
 	private HttpRequest request;
 	
 	@Text
-	@HtmlField(cssPath = "h1.main-title.font-heiti")
+	@HtmlField(cssPath = ".house-title>h1")
 	private String mainTitle;
 	
 	@Text
-	@HtmlField(cssPath = "div > i > em")
+	@HtmlField(cssPath = "div.house-desc-item.fl.c_333 > div > span.c_ff552e > b")
 	private String housePrice;
 	
 	@Text
-	@HtmlField(cssPath = "div.house-primary-content-wrap.fr > ul > li:nth-child(2) > div")
+	@HtmlField(cssPath = "div.house-desc-item.fl.c_333 > ul > li:nth-child(2) > span:nth-child(2)")
 	private String houseType;
 
 	@Text
-	@HtmlField(cssPath = "div.xiaoqu>a:nth-child(1) ")
+	@HtmlField(cssPath = "div.house-desc-item.fl.c_333 > ul > li:nth-child(5) > span:nth-child(2) > a:nth-child(1)")
 	private String area1;
 	
 	@Text
-	@HtmlField(cssPath = "div.xiaoqu>a:nth-child(2) ")
+	@HtmlField(cssPath = "div.house-desc-item.fl.c_333 > ul > li:nth-child(5) > span:nth-child(2) > a:nth-child(2) ")
 	private String area2;
 	
 	@Text
@@ -73,11 +73,11 @@ public class ChuZhuBean implements HtmlBean{
 	private String img4;
 
 	@Text
-	@HtmlField(cssPath = "div.house-primary-content-wrap.fr > ul > li:nth-child(4) > div")
+	@HtmlField(cssPath = "span.dz")
 	private String address;
 
 	@Text
-	@HtmlField(cssPath = "li.house-primary-content-li.house-primary-content-fir.clearfix > div > span")
+	@HtmlField(cssPath = "div.house-desc-item.fl.c_333 > ul > li:nth-child(1) > span:nth-child(2)")
 	private String payMethod;
 	
 	private String equipment;

@@ -27,7 +27,7 @@ public class SaveHousePipeline implements Pipeline<ChuZhuBean>{
 	@Override
 	public void process(ChuZhuBean bean) {
 		try {
-			Thread.sleep(5000);
+			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -50,7 +50,7 @@ public class SaveHousePipeline implements Pipeline<ChuZhuBean>{
 		}
 		rentService.insert(bean);
 		try {
-			Thread.sleep(5000);
+			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
